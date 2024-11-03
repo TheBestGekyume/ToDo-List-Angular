@@ -1,0 +1,59 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Tarefa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="" method="get">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" id="titulo" class="form-control bg-dark text-white">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descrição" class="form-label">Descrição</label>
+                        <textarea class="form-control bg-dark text-white" id="descrição" rows="3"></textarea>
+                    </div>
+
+                    <!-- <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select bg-dark text-white" aria-label="Default select">
+                            <option value="1" class="concluido">Concluído</option>
+                            <option value="2" class="pendente">Pendente</option>
+                            <option value="3" class="emAndamento" selected>Em Andamento</option>
+                        </select>
+                    </div> -->
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select bg-dark text-white" id="status" aria-label="Default select">
+                            <option value="1" class="concluido">Concluído</option>
+                            <option value="2" class="pendente">Pendente</option>
+                            <option value="3" class="emAndamento" selected>Em Andamento</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="teste" class="form-label">Data</label>
+                        <input type="date" id="teste" class="form-control bg-dark text-white">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="teste" class="form-label">Horário</label>
+                        <input type="time" id="teste" class="form-control bg-dark text-white">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

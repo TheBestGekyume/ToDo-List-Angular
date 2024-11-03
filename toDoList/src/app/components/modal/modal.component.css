@@ -1,0 +1,15 @@
+.concluido{
+    background-color: #2e2;
+}
+
+.pendente{
+    background-color: #e22;
+}
+
+.emAndamento{
+    background-color: #fe0;
+}
+
+/* .pendente:hover, .pendente:focus, .pendente:target, .pendente:active, .pendente:visited{
+    background-color: #ee222292 !important;
+} */

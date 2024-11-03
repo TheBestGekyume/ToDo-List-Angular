@@ -1,0 +1,11 @@
+button.btn-outline-danger{
+    background:#dc3545;
+}
+
+button.btn-outline-danger:hover{
+    background:#dc3546c7;
+}
+
+#descricao{
+    font-size: 12px;
+}
