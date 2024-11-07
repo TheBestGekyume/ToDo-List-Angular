@@ -3,5 +3,5 @@ export interface Task {
   title: string;
   description: string;
   completed: number;
-  date?: string;
+  created_at?: string;
 }
