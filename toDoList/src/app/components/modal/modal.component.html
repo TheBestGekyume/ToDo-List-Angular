@@ -1,69 +1,45 @@
-<div
-  class="modal"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content bg-dark text-white">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Tarefa</h1>
-        <button
-          #closeModalButton
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <h5 class="modal-title fs-5" id="exampleModalLabel">
+          {{ taskToEdit ? 'Editar Tarefa' : 'Nova Tarefa' }}
+        </h5>
       </div>
-
-      <form #taskForm="ngForm">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="titulo" class="form-label">Título</label>
-            <input
-              type="text"
-              id="titulo"
-              class="form-control bg-dark text-white"
-              [(ngModel)]="newTask.title"
-              name="title"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="descrição" class="form-label">Descrição</label>
-            <textarea
-              class="form-control bg-dark text-white"
-              id="descrição"
-              rows="3"
-              [(ngModel)]="newTask.description"
-              name="description"
-              required
-            ></textarea>
-          </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="title" class="form-label">Título</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="title" 
+            [(ngModel)]="newTask.title" 
+            required>
         </div>
-
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Fechar
-          </button>
-          <button
-            type="submit"
-            (click)="onSubmit()"
-            class="btn btn-primary"
-            [disabled]="!taskForm.form.valid"
-          >
-            Salvar
-          </button>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descrição</label>
+          <textarea 
+            class="form-control" 
+            id="description" 
+            [(ngModel)]="newTask.description" 
+            required></textarea>
         </div>
-      </form>
-
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="button" 
+          class="btn btn-secondary" 
+          data-bs-dismiss="modal"
+          #closeModalButton>
+          Fechar
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          (click)="onSubmit()">
+          {{ taskToEdit ? 'Atualizar' : 'Salvar' }}
+        </button>
+      </div>
     </div>
   </div>
 </div>

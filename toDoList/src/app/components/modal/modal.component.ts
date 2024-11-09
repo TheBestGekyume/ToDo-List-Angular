@@ -22,11 +22,16 @@ export class ModalComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['taskToEdit'] && this.taskToEdit) {
       this.newTask = { ...this.taskToEdit };
+    } else {
+      this.resetForm();
     }
   }
 
   onSubmit() {
     if (this.taskToEdit) {
+      // Garantir que estamos usando o ID da tarefa que está sendo editada
+      this.newTask.id = this.taskToEdit.id;
+      
       this.taskService.updateTask(this.newTask).subscribe({
         next: () => {
           this.taskService.taskUpdated.emit();
@@ -51,18 +56,15 @@ export class ModalComponent {
     }
   }
 
-
   private resetForm() {
-  this.newTask = {
-    title: '',
-    description: '',
-    completed: 0
-  };
-}
+    this.newTask = {
+      title: '',
+      description: '',
+      completed: 0
+    };
+  }
 
   private closeModal() {
-  this.closeModalButton.nativeElement.click();
-}
-
-
+    this.closeModalButton.nativeElement.click();
+  }
 }
