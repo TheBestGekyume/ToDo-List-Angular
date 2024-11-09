@@ -14,6 +14,9 @@ export class TarefaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTasks();
+    this.taskService.taskUpdated.subscribe(() => {
+      this.loadTasks();
+    });
   }
 
   loadTasks(): void {
