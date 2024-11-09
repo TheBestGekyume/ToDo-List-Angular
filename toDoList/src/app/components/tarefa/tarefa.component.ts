@@ -45,4 +45,18 @@ export class TarefaComponent implements OnInit {
     this.selectedTask = { ...task };
     
   }
+
+  onTaskCompletedChange(task: Task) {
+    task.completed = task.completed ? 1 : 0;
+    this.taskService.updateTask(task).subscribe({
+      next: () => {
+        this.taskService.taskUpdated.emit();
+      },
+      error: (error) => {
+        console.error('Error updating task', error);
+        task.completed = task.completed ? 0 : 1;
+      }
+    });
+  }
+
 }
