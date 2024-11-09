@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Input, SimpleChanges } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, SimpleChanges, OnDestroy } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task.interface';
 
@@ -7,9 +7,9 @@ import { Task } from '../../interfaces/task.interface';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent {
+export class ModalComponent implements OnDestroy {
   @ViewChild('closeModalButton') closeModalButton!: ElementRef;
-  @Input() taskToEdit: Task | undefined;
+  @Input() taskToEdit: Task | false | undefined;
 
   newTask: Task = {
     title: '',
@@ -18,6 +18,11 @@ export class ModalComponent {
   };
 
   constructor(private taskService: TaskService) { }
+
+  ngOnDestroy() {
+    this.resetForm();
+    this.taskToEdit = false;
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['taskToEdit'] && this.taskToEdit) {
@@ -56,7 +61,7 @@ export class ModalComponent {
     }
   }
 
-  private resetForm() {
+  protected resetForm() {
     this.newTask = {
       title: '',
       description: '',
