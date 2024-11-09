@@ -12,6 +12,7 @@
           <input 
             type="text" 
             class="form-control" 
+            data-bs-theme="dark"
             id="title" 
             [(ngModel)]="newTask.title" 
             required>
@@ -19,7 +20,8 @@
         <div class="mb-3">
           <label for="description" class="form-label">Descrição</label>
           <textarea 
-            class="form-control" 
+            class="form-control"
+            data-bs-theme="dark"
             id="description" 
             [(ngModel)]="newTask.description" 
             required></textarea>
