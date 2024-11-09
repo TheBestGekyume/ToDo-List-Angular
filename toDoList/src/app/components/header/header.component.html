@@ -2,11 +2,10 @@
     <div class="navbar-brand text-white">
         <h1>ToDo List</h1>
         <h2>{{ currentDate | date:'HH:mm' }}</h2>
-        <p>{{ currentDate | date:'EEEE, dd MMMM' }}</p>
+        <p>{{ currentDate | date:'EE dd/MM' }}</p>
     </div>
     <div>
         <button class="btn btn-primary rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
     </div>
 </header>
 
-<app-modal />

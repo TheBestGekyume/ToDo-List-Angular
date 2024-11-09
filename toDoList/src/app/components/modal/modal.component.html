@@ -1,5 +1,5 @@
 <div
-  class="modal fade"
+  class="modal"
   id="exampleModal"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
@@ -18,7 +18,7 @@
         ></button>
       </div>
 
-      <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <form #taskForm="ngForm">
         <div class="modal-body">
           <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
@@ -55,6 +55,7 @@
           </button>
           <button
             type="submit"
+            (click)="onSubmit()"
             class="btn btn-primary"
             [disabled]="!taskForm.form.valid"
           >
@@ -62,6 +63,7 @@
           </button>
         </div>
       </form>
+
     </div>
   </div>
 </div>
