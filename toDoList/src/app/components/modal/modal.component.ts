@@ -32,6 +32,11 @@ export class ModalComponent implements OnDestroy {
     }
   }
 
+  isFormValid(): boolean {
+    return this.newTask.title.trim() !== '' && 
+           this.newTask.description.trim() !== '';
+  }  
+
   onSubmit() {
     if (this.taskToEdit) {
       // Garantir que estamos usando o ID da tarefa que está sendo editada
