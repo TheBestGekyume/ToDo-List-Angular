@@ -9,6 +9,7 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class TarefaComponent implements OnInit {
   tasks: Task[] = [];
+  selectedTask: Task | undefined;
 
   constructor(private taskService: TaskService) {}
 
@@ -25,5 +26,23 @@ export class TarefaComponent implements OnInit {
         this.tasks = tasks;
       }
     );
+  }
+
+  getTaskById(id: number): Task | undefined {
+    return this.tasks.find((task) => task.id === id);
+  }
+
+  deleteTask(task: Task): void {
+    this.taskService.deleteTask(task).subscribe(
+      () => {
+        this.loadTasks();
+      }
+    );
+  }
+
+  openEditModal(task:Task): void {
+    console.log("teste " + this.selectedTask);
+    this.selectedTask = { ...task };
+    
   }
 }

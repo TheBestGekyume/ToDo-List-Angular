@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, SimpleChanges } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../interfaces/task.interface';
 
@@ -9,6 +9,7 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class ModalComponent {
   @ViewChild('closeModalButton') closeModalButton!: ElementRef;
+  @Input() taskToEdit: Task | undefined;
 
   newTask: Task = {
     title: '',
@@ -16,30 +17,52 @@ export class ModalComponent {
     completed: 0
   };
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['taskToEdit'] && this.taskToEdit) {
+      this.newTask = { ...this.taskToEdit };
+    }
+  }
 
   onSubmit() {
-    this.taskService.createTask(this.newTask).subscribe({
-      next: () => {
-        this.taskService.taskUpdated.emit();
-        this.resetForm();
-        this.closeModal();
-      },
-      error: (error) => {
-        console.error('Error creating task', error);
-      }
-    });
+    if (this.taskToEdit) {
+      this.taskService.updateTask(this.newTask).subscribe({
+        next: () => {
+          this.taskService.taskUpdated.emit();
+          this.resetForm();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Error updating task', error);
+        }
+      });
+    } else {
+      this.taskService.createTask(this.newTask).subscribe({
+        next: () => {
+          this.taskService.taskUpdated.emit();
+          this.resetForm();
+          this.closeModal();
+        },
+        error: (error) => {
+          console.error('Error creating task', error);
+        }
+      });
+    }
   }
+
 
   private resetForm() {
-    this.newTask = {
-      title: '',
-      description: '',
-      completed: 0
-    };
-  }
+  this.newTask = {
+    title: '',
+    description: '',
+    completed: 0
+  };
+}
 
   private closeModal() {
-    this.closeModalButton.nativeElement.click();
-  }
+  this.closeModalButton.nativeElement.click();
+}
+
+
 }
