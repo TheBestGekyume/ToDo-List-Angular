@@ -17,6 +17,7 @@ export class TarefaComponent implements OnInit {
     this.loadTasks();
     this.taskService.taskUpdated.subscribe(() => {
       this.loadTasks();
+      this.selectedTask = undefined;
     });
   }
 
@@ -28,22 +29,18 @@ export class TarefaComponent implements OnInit {
     );
   }
 
-  getTaskById(id: number): Task | undefined {
-    return this.tasks.find((task) => task.id === id);
+  openEditModal(task: Task): void {
+    this.selectedTask = { ...task };
   }
 
   deleteTask(task: Task): void {
-    this.taskService.deleteTask(task).subscribe(
-      () => {
-        this.loadTasks();
-      }
-    );
-  }
-
-  openEditModal(task:Task): void {
-    console.log("teste " + this.selectedTask);
-    this.selectedTask = { ...task };
-    
+    if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+      this.taskService.deleteTask(task).subscribe(
+        () => {
+          this.loadTasks();
+        }
+      );
+    }
   }
 
   onTaskCompletedChange(task: Task) {
@@ -58,5 +55,4 @@ export class TarefaComponent implements OnInit {
       }
     });
   }
-
 }
