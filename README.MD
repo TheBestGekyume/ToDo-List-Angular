@@ -21,7 +21,7 @@ O formulário de cadastro e edição inclui:
 
 Na tela inicial, a aplicação exibe:
 - A **data atual do sistema**
-- A **hora atualizada a cada minuto**
+- A **hora atualizada a cada minuto** 
 
 ## 🛠️ Tecnologias Utilizadas
 
