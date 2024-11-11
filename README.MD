@@ -32,22 +32,27 @@ Na tela inicial, a aplicação exibe:
 ## 📝 Instruções para Rodar o Projeto
 
 1. Clone o repositório ou faça o download do código fonte.
+
 2. No terminal, navegue até a pasta `toDoList`:
+
    ```bash
    cd .\toDoList\
    ```
+
 3. Instale as dependências do projeto:
+
    ```bash
    npm install
    ```
+
 4. Inicie o projeto:
    ```bash
    npm start
    ```
+
 5. A aplicação estará disponível em [http://localhost:4200](http://localhost:4200).
 
 ## 👥 Criadores
-
 Este projeto foi desenvolvido por:
 
 - [Geekume](https://github.com/TheBestGekyume)
