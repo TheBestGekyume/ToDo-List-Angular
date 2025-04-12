@@ -55,7 +55,7 @@ Na tela inicial, a aplicação exibe:
 ## 👥 Criadores
 Este projeto foi desenvolvido por:
 
-- [Geekume](https://github.com/TheBestGekyume)
+- [Gekyume](https://github.com/TheBestGekyume)
 - [Lucas Lourenço](https://github.com/lourencolucas)
 - [Lidor Brosh](https://github.com/lidorbrosh)
 - [Lucas Borges](https://github.com/DOULORES)
